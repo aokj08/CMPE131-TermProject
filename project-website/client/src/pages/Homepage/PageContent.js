@@ -1,6 +1,7 @@
 import Footer from "../../components/Layout/Footer";
 import styles from "./PageContent.module.css";
 import { city_hall_sign } from "../../assets";
+import ContactMe from "./ContactMe";
 
 const PageContent = () => {
   return (
@@ -286,7 +287,7 @@ const PageContent = () => {
           </div>
         </div>
       </section>
-
+      <ContactMe />
       <Footer />
     </div>
   );

@@ -1,14 +1,20 @@
 import "./App.css";
-import Header from "./components/Layout/Header";
 import Home from "./pages/Homepage/Home";
-import Footer from "./components/Layout/Footer";
-import Header1 from "./components/Layout/Header1";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import AuthProvider from "./store/AuthProvider";
+import Signin from "./pages/Authentication/Signin";
 
 function App() {
   return (
-    <>
-      <Home />
-    </>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<Signin />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
 

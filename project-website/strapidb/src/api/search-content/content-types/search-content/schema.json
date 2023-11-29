@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "search_contents",
+  "info": {
+    "singularName": "search-content",
+    "pluralName": "search-contents",
+    "displayName": "Search Content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "link": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

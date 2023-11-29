@@ -1,0 +1,15 @@
+.flex-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.register-member {
+  background: none;
+  border: none;
+  margin: none;
+  padding: none;
+  color: rgb(88, 88, 204);
+}

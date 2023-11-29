@@ -10,3 +10,8 @@
 .hover-navbar:hover {
   background-color: white;
 }
+
+.search-button {
+  margin-left: 1rem;
+  height: 2.24rem;
+}

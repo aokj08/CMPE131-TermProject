@@ -3,6 +3,9 @@ import Slideshow from "./../../components/UI/Slideshow";
 import PageContent from "./PageContent";
 import Header from "../../components/Layout/Header";
 import { useEffect, useState } from "react";
+import AuthenModal from "../../components/AuthenModal/AuthenModal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [isTransparent, setIsTransparent] = useState(false);
@@ -18,6 +21,7 @@ const Home = () => {
 
   return (
     <div className={styles["scroll-container"]}>
+      <ToastContainer />
       <Header className={isTransparent ? "navbar-bg" : "hover-navbar"} />
       <Slideshow />
       <PageContent />
