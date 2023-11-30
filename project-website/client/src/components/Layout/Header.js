@@ -7,19 +7,25 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import styles from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import { getContents } from "../../api/axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ListPage from "./ListPage";
+import AuthContext from "../../store/auth-context";
 
 const Header = (props) => {
   const [contents, setContents] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [hasList, setHasList] = useState(false);
 
+  const ctx = useContext(AuthContext);
+
   useEffect(() => {
     getContents()
       .then((json) => {
         setContents(json.data);
         return json;
+      })
+      .catch((error) => {
+        console.log("Error fetching database from Strapi - Connection 404");
       })
       .then((json) => {
         setSearchResults(json);
@@ -45,10 +51,14 @@ const Header = (props) => {
     }
   };
 
+  const logOutHandler = () => {
+    ctx.logOut();
+  };
+
   return (
     <Navbar
-      expand="lg"
-      className={`bg-body-tertiary ${styles[props.className]}`}
+      expand="xxl"
+      className={`bg-body-tertiary ${styles[props.className]} `}
       fixed="top"
       // bg="dark"
       // data-bs-theme="dark"
@@ -63,7 +73,10 @@ const Header = (props) => {
             <span>City of Williamston</span>
           </NavLink>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Toggle
+          aria-controls="navbarScroll"
+          className={styles["hamburger-button"]}
+        />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
@@ -101,7 +114,7 @@ const Header = (props) => {
                 aria-label="Search"
                 onChange={handleSearchChange}
               />{" "}
-              {hasList && <ListPage searchResults={searchResults} />}
+              {/* {hasList && <ListPage searchResults={searchResults} />} */}
             </div>
             <Button
               variant="outline-success"
@@ -110,17 +123,36 @@ const Header = (props) => {
               Search
             </Button>
           </Form>
-          {/* {hasList && <ListPage searchResults={searchResults} />} */}
-          <ul className="nav navbar-nav ml-auto">
+          {hasList && <ListPage searchResults={searchResults} />}
+          <ul className={`nav navbar-nav ml-auto ${styles["user-login"]}`}>
             <Nav.Item>
-              <Link to="/signin" className="nav-link">
-                <span className="fas fa-user" /> Sign Up
-              </Link>
+              {ctx.isLogIn ? (
+                <span className="fas fa-user">
+                  {` ${ctx.currentUser.displayName}`}
+                </span>
+              ) : (
+                <Link to="/signin" className="nav-link">
+                  <span className="fas fa-user" /> Sign Up
+                </Link>
+              )}
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/signin">
-                <span className="fas fa-sign-in-alt" /> Login
-              </Link>
+              {ctx.isLogIn ? (
+                <button
+                  onClick={logOutHandler}
+                  style={{ background: "none", border: "none" }}
+                >
+                  <span
+                    className="fas fa-sign-in-alt"
+                    style={{ fontFamily: "Font Awesome 6 Free" }}
+                  />
+                  Sign Out
+                </button>
+              ) : (
+                <Link className="nav-link" to="/signin">
+                  <span className="fas fa-sign-in-alt" /> Login
+                </Link>
+              )}
             </Nav.Item>
           </ul>
         </Navbar.Collapse>

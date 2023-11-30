@@ -1,10 +1,10 @@
 import React from "react";
 
 const AuthContext = React.createContext({
-  currentUser: "",
+  currentUser: {},
+  isLogIn: false,
   signUp: () => {},
   logIn: () => {},
-  logInWithGoogle: () => {},
   logOut: () => {},
   resetPassword: () => {},
   sendEmailVerification: () => {},

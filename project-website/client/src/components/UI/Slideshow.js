@@ -56,7 +56,7 @@ const Slideshow = () => {
         </div>
 
         <div
-          className="mask"
+          className={`mask ${styles["mask"]}`}
           style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
         ></div>
 

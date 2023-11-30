@@ -360,6 +360,20 @@ p {
   }
 }
 
+@media (max-width: 1399px) {
+  .tm-section-pad-top {
+    padding-top: 100px;
+  }
+
+  .tm-section-title {
+    font-size: 2rem;
+  }
+
+  .tm-section-pad-top-content {
+    padding-top: 40px;
+  }
+}
+
 @media (max-width: 991px) {
   .tm-intro-text-container {
     padding-left: 15px;
@@ -416,6 +430,18 @@ p {
 
   .tm-gallery-item {
     margin: 0;
+  }
+
+  .tm-section-pad-top-content {
+    padding-top: 20px;
+  }
+
+  .tm-section-pad-top {
+    padding-top: 20px;
+  }
+
+  .tm-intro-text-container {
+    padding-top: 0;
   }
 }
 

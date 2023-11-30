@@ -15,3 +15,36 @@
   margin-left: 1rem;
   height: 2.24rem;
 }
+
+.user-login {
+  align-items: center;
+  padding-left: 0.2rem;
+  margin-left: 0.2rem;
+  gap: 0.2rem;
+}
+
+.hamburger-button {
+  background-image: url(../../assets/Home/hamburger-icon-1.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/* @media screen and (max-width: 1269px) {
+  .user-login {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.2rem;
+    margin-left: 0;
+  }
+} */
+
+@media screen and (max-width: 1400px) {
+  .user-login {
+    flex-direction: column;
+    margin-top: 0.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 0.2rem;
+    margin-left: 0;
+  }
+}

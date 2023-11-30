@@ -10,6 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
   const [isTransparent, setIsTransparent] = useState(false);
 
+  let screenWidth = window.innerWidth;
+  console.log(screenWidth);
+
+  let introCode = false;
+  if (screenWidth <= 1399) {
+    introCode = false;
+  } else {
+    introCode = true;
+  }
+
   useEffect(() => {
     let selector = document.querySelector(`.${styles["scroll-container"]}`);
     selector.addEventListener("scroll", () => {
@@ -22,8 +32,10 @@ const Home = () => {
   return (
     <div className={styles["scroll-container"]}>
       <ToastContainer />
-      <Header className={isTransparent ? "navbar-bg" : "hover-navbar"} />
-      <Slideshow />
+      <Header
+        className={isTransparent || !introCode ? "navbar-bg" : "hover-navbar"}
+      />
+      {introCode && <Slideshow />}
       <PageContent />
     </div>
   );

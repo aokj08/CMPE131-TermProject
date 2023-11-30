@@ -5,7 +5,7 @@ import { loading, imgBack } from "../../assets";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const ContactMe = (props) => {
+const ContactMe = () => {
   const [typeEffect] = useTypewriter({
     words: ["If you have any questions", "Contact Us", "City of Williamston"],
     loop: {},
@@ -60,10 +60,7 @@ const ContactMe = (props) => {
   };
 
   return (
-    <div
-      className={`${styles["main-container"]} ${styles["fade-in"]}`}
-      id={props.id || ""}
-    >
+    <div className={`${styles["main-container"]}`}>
       <div className={styles["central-form"]}>
         <div className={styles["col"]}>
           <h2 className={styles["title"]}>

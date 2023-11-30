@@ -19,10 +19,13 @@ const Signin = () => {
   const [justifyActive, setJustifyActive] = useState("tab1");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [isSignup, setIsSignup] = useState(true);
 
   const ctx = useContext(AuthContext);
+
   const handleJustifyClick = (value) => {
     if (value === justifyActive) {
       return;
@@ -39,16 +42,27 @@ const Signin = () => {
     setPassword(event.target.value);
   };
 
+  const loginEmailInputHandler = (event) => {
+    setLoginEmail(event.target.value);
+  };
+
+  const LoginPasswordInputHandler = (event) => {
+    setLoginPassword(event.target.value);
+  };
+
   const formSignInHandler = (e) => {
     e.preventDefault();
+    ctx.logIn("Email", loginEmail, loginPassword);
+    setLoginEmail("");
+    setLoginPassword("");
   };
 
   const formRegisterHandler = (e) => {
     e.preventDefault();
     ctx.signUp(email, password);
 
-    // setEmail("");
-    // setPassword("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -93,17 +107,11 @@ const Signin = () => {
                     color="none"
                     className="m-1"
                     style={{ color: "#1266f1" }}
+                    onClick={() => {
+                      ctx.logIn("Facebook");
+                    }}
                   >
                     <MDBIcon fab icon="facebook-f" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="twitter" size="sm" />
                   </MDBBtn>
 
                   <MDBBtn
@@ -123,6 +131,9 @@ const Signin = () => {
                     color="none"
                     className="m-1"
                     style={{ color: "#1266f1" }}
+                    onClick={() => {
+                      ctx.logIn("GitHub");
+                    }}
                   >
                     <MDBIcon fab icon="github" size="sm" />
                   </MDBBtn>
@@ -134,20 +145,22 @@ const Signin = () => {
               <form onSubmit={formSignInHandler}>
                 <MDBInput
                   wrapperClass="mb-4"
-                  label="Email address"
-                  id="form1"
+                  label="Email Address"
+                  // id="form1"
                   type="email"
-                  value={email}
+                  value={loginEmail}
+                  onChange={loginEmailInputHandler}
                 />
                 <MDBInput
                   wrapperClass="mb-4"
-                  label="Password"
-                  id="form2"
+                  label="Login Password"
+                  // id="form2"
                   type="password"
-                  value={password}
+                  value={loginPassword}
+                  onChange={LoginPasswordInputHandler}
                 />
 
-                <div className="d-flex justify-content-between mx-4 mb-4">
+                {/* <div className="d-flex justify-content-between mx-4 mb-4">
                   <MDBCheckbox
                     name="flexCheck"
                     value=""
@@ -155,7 +168,7 @@ const Signin = () => {
                     label="Remember me"
                   />
                   <a href="!#">Forgot password?</a>
-                </div>
+                </div> */}
 
                 <MDBBtn className="mb-4 w-100">Sign in</MDBBtn>
               </form>
@@ -198,15 +211,6 @@ const Signin = () => {
                     color="none"
                     className="m-1"
                     style={{ color: "#1266f1" }}
-                  >
-                    <MDBIcon fab icon="twitter" size="sm" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="m-1"
-                    style={{ color: "#1266f1" }}
                     onClick={() => {
                       ctx.logIn("Google");
                     }}
@@ -219,6 +223,9 @@ const Signin = () => {
                     color="none"
                     className="m-1"
                     style={{ color: "#1266f1" }}
+                    onClick={() => {
+                      ctx.logIn("GitHub");
+                    }}
                   >
                     <MDBIcon fab icon="github" size="sm" />
                   </MDBBtn>

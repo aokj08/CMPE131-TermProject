@@ -1,19 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AuthContext from "./auth-context";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  onAuthStateChanged,
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
+  GithubAuthProvider,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 // const provider = new GoogleAuthProvider();
 
 const AuthProvider = (props) => {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isLogIn, setIsLogIn] = useState(false);
+
+  const navigate = useNavigate();
+
+  // onAuthStateChanged(auth, (user) => {
+  //   console.log(user);
+  //   setCurrentUser(user);
+  // });
 
   const signUp = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -21,38 +33,15 @@ const AuthProvider = (props) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        // auth.signOut();
-        // navigate("/login");
-        // ...
+        setIsLogIn(true);
+        setCurrentUser(user);
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
         // ..
-      });
-  };
-
-  const logInWithGoogle = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
       });
   };
 
@@ -68,6 +57,11 @@ const AuthProvider = (props) => {
           const user = result.user;
           // IdP data available using getAdditionalUserInfo(result)
           // ...
+          setCurrentUser(user);
+          console.log(user);
+
+          setIsLogIn(true);
+          navigate("/");
         })
         .catch((error) => {
           // Handle Errors here.
@@ -80,7 +74,21 @@ const AuthProvider = (props) => {
           // ...
         });
     } else if (method === "Email") {
-      console.log("In progress");
+      signInWithEmailAndPassword(auth, email, password)
+        .then((result) => {
+          console.log(result);
+          const user = result.user;
+          console.log("Login with " + user);
+          setIsLogIn(true);
+          setCurrentUser(user);
+          console.log(user);
+
+          navigate("/");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
     } else if (method === "Facebook") {
       const provider = new FacebookAuthProvider();
       signInWithPopup(auth, provider)
@@ -92,6 +100,11 @@ const AuthProvider = (props) => {
           const user = result.user;
           // IdP data available using getAdditionalUserInfo(result)
           // ...
+          setCurrentUser(user);
+          console.log(user);
+
+          setIsLogIn(true);
+          navigate("/");
         })
         .catch((error) => {
           // Handle Errors here.
@@ -103,10 +116,39 @@ const AuthProvider = (props) => {
           const credential = FacebookAuthProvider.credentialFromError(error);
           // ...
         });
+    } else if (method === "GitHub") {
+      const provider = new GithubAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GithubAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+          setCurrentUser(user);
+          setIsLogIn(true);
+          console.log(user);
+
+          navigate("/");
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GithubAuthProvider.credentialFromError(error);
+          // ...
+        });
     }
   };
 
   const logOut = () => {
+    setCurrentUser({});
+    setIsLogIn(false);
     return auth.signOut();
   };
 
@@ -133,12 +175,11 @@ const AuthProvider = (props) => {
   }
 
   const value = {
-    currentUser: "",
-    isLogin: false,
+    currentUser: currentUser,
+    isLogIn: isLogIn,
     signUp: signUp,
     logIn: logIn,
-    logInWithGoogle: logInWithGoogle,
-    logOut: () => {},
+    logOut: logOut,
     resetPassword: () => {},
     sendEmailVerification: () => {},
   };

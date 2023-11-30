@@ -5,6 +5,11 @@ export const api = axios.create({
 });
 
 export const getContents = async () => {
-  const response = await api.get("search-contents");
-  return response.data;
+  try {
+    const response = await api.get("search-contents");
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };

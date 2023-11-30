@@ -2,61 +2,109 @@ import Footer from "../../components/Layout/Footer";
 import styles from "./PageContent.module.css";
 import { city_hall_sign } from "../../assets";
 import ContactMe from "./ContactMe";
+import Slideshow from "../../components/UI/Slideshow";
 
 const PageContent = () => {
+  let screenWidth = window.innerWidth;
+  console.log(screenWidth);
+
+  let introCode;
+  if (screenWidth <= 1399) {
+    introCode = (
+      <div className="row">
+        <h2
+          className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-left`}
+        >
+          Introduction
+        </h2>
+        <p
+          className={`mb-4 text-left ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
+        >
+          Our goal is to provide information about our community for residents
+          and visitors to learn about who we are and what we can provide. This
+          will be an ongoing project with updates and additions as we go along,
+          so check back often!
+        </p>
+        <Slideshow />
+        {/* <div className="col-lg-12">
+          <img
+            src={city_hall_sign}
+            alt="Image"
+            className={`img-fluid ${styles["tm-intro-img"]}`}
+          />
+        </div> */}
+        <div className="col-lg-12">
+          <div className={styles["tm-intro-text-container"]}>
+            <p
+              className={`mb-4 text-center ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
+            ></p>
+            <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
+              <h4>WILLIAMSTON CITY HALL</h4>
+              <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
+              <h5>
+                517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
+              </h5>
+              <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
+              <h5>
+                A locked drop box is available near the front entrance of City
+                Hall for your convenience.
+              </h5>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    introCode = (
+      <div className="row">
+        <div className="col-lg-6">
+          <img
+            src={city_hall_sign}
+            alt="Image"
+            className={`img-fluid ${styles["tm-intro-img"]}`}
+          />
+        </div>
+        <div className="col-lg-6">
+          <div className={styles["tm-intro-text-container"]}>
+            <h2
+              className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-center`}
+            >
+              Introduction
+            </h2>
+            <p
+              className={`mb-4 text-center ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
+            >
+              Our goal is to provide information about our community for
+              residents and visitors to learn about who we are and what we can
+              provide. This will be an ongoing project with updates and
+              additions as we go along, so check back often!
+            </p>
+            <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
+              <h4>WILLIAMSTON CITY HALL</h4>
+              <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
+              <h5>
+                517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
+              </h5>
+              <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
+              <h5>
+                A locked drop box is available near the front entrance of City
+                Hall for your convenience.
+              </h5>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles["page-content"]}>
       <section id="introduction" className={styles["tm-section-pad-top"]}>
         <div className="container">
-          <div className="row">
-            <div className="col-lg-6">
-              <img
-                src={city_hall_sign}
-                alt="Image"
-                className={`img-fluid ${styles["tm-intro-img"]}`}
-              />
-            </div>
-            <div className="col-lg-6">
-              <div className={styles["tm-intro-text-container"]}>
-                <h2
-                  className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-center`}
-                >
-                  Introduction
-                </h2>
-                <p
-                  className={`mb-4 text-center ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
-                >
-                  Our goal is to provide information about our community for
-                  residents and visitors to learn about who we are and what we
-                  can provide. This will be an ongoing project with updates and
-                  additions as we go along, so check back often!
-                </p>
-                <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
-                  <h4>WILLIAMSTON CITY HALL</h4>
-                  <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
-                  <h5>
-                    517-655-2774; Fax-517-655-2797;{" "}
-                    <a>info@williamston-mi.us</a>
-                  </h5>
-                  <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
-                  <h5>
-                    A locked drop box is available near the front entrance of
-                    City Hall for your convenience.
-                  </h5>
-                </p>
-                {/* <div className={styles["tm-next"]}>
-                  <a
-                    href="#work"
-                    className={`${styles["tm-intro-text"]} ${styles["tm-btn-primary"]}`}
-                  >
-                    Read More
-                  </a>
-                </div> */}
-              </div>
-            </div>
-          </div>
-
-          <div className={`row ${styles["tm-section-pad-top"]}`}>
+          {introCode}
+          <div
+            className={`row ${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]}`}
+          >
             <div className="col-lg-4 mt-5 mt-lg-0">
               <i
                 className={`fas fa-4x fa-tint text-center ${styles["tm-icon"]}`}
@@ -117,7 +165,10 @@ const PageContent = () => {
         </div>
       </section>
 
-      <section id="work" className={styles["tm-section-pad-top"]}>
+      <section
+        id="work"
+        className={`${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]}`}
+      >
         <div className={`container ${styles["tm-container-gallery"]}`}>
           <div className="row">
             <div className="text-center col-12">
