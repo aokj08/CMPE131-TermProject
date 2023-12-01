@@ -7,6 +7,7 @@ import {
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
+import { email, fax, phone } from "../../assets";
 
 const Footer = () => {
   return (
@@ -18,7 +19,7 @@ const Footer = () => {
             color="light"
             floating
             className="m-1"
-            href="#!"
+            href="https://www.facebook.com/williamstoncity/"
             role="button"
           >
             <MDBIcon fab icon="facebook-f" />
@@ -109,14 +110,30 @@ const Footer = () => {
 
         <section className="mb-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+            A Boards and Commissions application can be picked up at City Hall,
+            161 E. Grand River Ave., Williamston, or a fillable version is
+            available by{" "}
+            <a
+              href="http://new.williamston-mi.us/Portals/47/Forms/boards%20%20commissions%20application%20formNa.pdf"
+              style={{
+                color: "white",
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+            >
+              clicking here
+            </a>
+            .
           </p>
+          <p>Contact City Hall at: 161 E. Grand River, Williamston, MI 48895</p>
+          <p>
+            <img src={phone} alt="" /> (517) 655.2774 | <img src={fax} alt="" />{" "}
+            (517) 655-2797 | <img src={email} alt="" /> info@williamston-mi.us
+          </p>
+          <p> After Hours Water or Sewer Emergency: (517) 655.4222.</p>
         </section>
 
-        <section className="">
+        {/* <section className="">
           <MDBRow>
             <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
               <h5 className="text-uppercase">Links</h5>
@@ -226,7 +243,7 @@ const Footer = () => {
               </ul>
             </MDBCol>
           </MDBRow>
-        </section>
+        </section> */}
       </MDBContainer>
 
       <div

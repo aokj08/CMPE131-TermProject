@@ -372,6 +372,10 @@ p {
   .tm-section-pad-top-content {
     padding-top: 40px;
   }
+
+  .tm-intro-text-border {
+    border-top: #ccc solid 1px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -392,6 +396,10 @@ p {
   .tm-btn-submit {
     margin-left: 0;
     margin-top: 20px;
+  }
+
+  .tm-intro-text-border {
+    border-top: #ccc solid 1px;
   }
 }
 
@@ -414,6 +422,10 @@ p {
 
   .navbar-collapse .nav-link {
     color: #8f8f8f;
+  }
+
+  .tm-intro-text-border {
+    border-top: #ccc solid 1px;
   }
 }
 
@@ -440,8 +452,16 @@ p {
     padding-top: 20px;
   }
 
+  .row {
+    margin-top: 70px;
+  }
+
   .tm-intro-text-container {
     padding-top: 0;
+  }
+
+  .tm-intro-text-border {
+    border-top: #ccc solid 1px;
   }
 }
 

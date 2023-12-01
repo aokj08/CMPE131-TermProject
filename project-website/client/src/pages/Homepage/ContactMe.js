@@ -1,9 +1,10 @@
 import styles from "./ContactMe.module.css";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { loading, imgBack } from "../../assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+import AuthContext from "../../store/auth-context";
 
 const ContactMe = () => {
   const [typeEffect] = useTypewriter({
@@ -19,6 +20,8 @@ const ContactMe = () => {
   const [banner, setBanner] = useState("");
   const [bool, setBool] = useState(false);
 
+  const ctx = useContext(AuthContext);
+
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -28,7 +31,16 @@ const ContactMe = () => {
   const handleMessage = (e) => {
     setMessage(e.target.value);
   };
-  console.log(name);
+
+  useEffect(() => {
+    if (ctx.isLogIn) {
+      setName(ctx.currentUser.displayName);
+      setEmail(ctx.currentUser.email);
+    } else {
+      setName("");
+      setEmail("");
+    }
+  }, [ctx.isLogIn]);
 
   const submitForm = async (e) => {
     e.preventDefault();

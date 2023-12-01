@@ -3,99 +3,121 @@ import styles from "./PageContent.module.css";
 import { city_hall_sign } from "../../assets";
 import ContactMe from "./ContactMe";
 import Slideshow from "../../components/UI/Slideshow";
+import { useEffect, useState } from "react";
+import CouncilMemebrs from "./CouncilMembers";
 
 const PageContent = () => {
-  let screenWidth = window.innerWidth;
-  console.log(screenWidth);
+  const [introCode, setIntroCode] = useState();
 
-  let introCode;
-  if (screenWidth <= 1399) {
-    introCode = (
-      <div className="row">
-        <h2
-          className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-left`}
-        >
-          Introduction
-        </h2>
-        <p
-          className={`mb-4 text-left ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
-        >
-          Our goal is to provide information about our community for residents
-          and visitors to learn about who we are and what we can provide. This
-          will be an ongoing project with updates and additions as we go along,
-          so check back often!
-        </p>
-        <Slideshow />
-        {/* <div className="col-lg-12">
-          <img
-            src={city_hall_sign}
-            alt="Image"
-            className={`img-fluid ${styles["tm-intro-img"]}`}
-          />
-        </div> */}
-        <div className="col-lg-12">
-          <div className={styles["tm-intro-text-container"]}>
-            <p
-              className={`mb-4 text-center ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
-            ></p>
-            <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
-              <h4>WILLIAMSTON CITY HALL</h4>
-              <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
-              <h5>
-                517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
-              </h5>
-              <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
-              <h5>
-                A locked drop box is available near the front entrance of City
-                Hall for your convenience.
-              </h5>
-            </p>
+  useEffect(() => {
+    if (window.innerWidth <= 450) {
+      setIntroCode(
+        <div className={`row ${styles["row"]}`}>
+          <p
+            className={`mb-4 text-left ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
+          >
+            Our goal is to provide information about our community for residents
+            and visitors to learn about who we are and what we can provide. This
+            will be an ongoing project with updates and additions as we go
+            along, so check back often!
+          </p>
+          <Slideshow />
+          <div className="col-lg-12">
+            <div className={styles["tm-intro-text-container"]}>
+              <p className={`mb-5 text-center ${styles["tm-intro-text"]} `}>
+                <h4>WILLIAMSTON CITY HALL</h4>
+                <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
+                <h5>
+                  517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
+                </h5>
+                <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
+                <h5>
+                  A locked drop box is available near the front entrance of City
+                  Hall for your convenience.
+                </h5>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  } else {
-    introCode = (
-      <div className="row">
-        <div className="col-lg-6">
-          <img
-            src={city_hall_sign}
-            alt="Image"
-            className={`img-fluid ${styles["tm-intro-img"]}`}
-          />
-        </div>
-        <div className="col-lg-6">
-          <div className={styles["tm-intro-text-container"]}>
-            <h2
-              className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-center`}
-            >
-              Introduction
-            </h2>
-            <p
-              className={`mb-4 text-center ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
-            >
-              Our goal is to provide information about our community for
-              residents and visitors to learn about who we are and what we can
-              provide. This will be an ongoing project with updates and
-              additions as we go along, so check back often!
-            </p>
-            <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
-              <h4>WILLIAMSTON CITY HALL</h4>
-              <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
-              <h5>
-                517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
-              </h5>
-              <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
-              <h5>
-                A locked drop box is available near the front entrance of City
-                Hall for your convenience.
-              </h5>
-            </p>
+      );
+    } else if (window.innerWidth <= 1399) {
+      setIntroCode(
+        <div className="row">
+          <h2
+            className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-left`}
+          >
+            Introduction
+          </h2>
+          <p
+            className={`mb-4 text-left ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
+          >
+            Our goal is to provide information about our community for residents
+            and visitors to learn about who we are and what we can provide. This
+            will be an ongoing project with updates and additions as we go
+            along, so check back often!
+          </p>
+          <Slideshow />
+          <div className="col-lg-12">
+            <div className={styles["tm-intro-text-container"]}>
+              <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
+                <h4>WILLIAMSTON CITY HALL</h4>
+                <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
+                <h5>
+                  517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
+                </h5>
+                <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
+                <h5>
+                  A locked drop box is available near the front entrance of City
+                  Hall for your convenience.
+                </h5>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      );
+    } else {
+      setIntroCode(
+        <div className="row">
+          <div className="col-lg-6">
+            <img
+              src={city_hall_sign}
+              alt="Image"
+              className={`img-fluid ${styles["tm-intro-img"]}`}
+            />
+          </div>
+          <div className="col-lg-6">
+            <div className={styles["tm-intro-text-container"]}>
+              <h2
+                className={`${styles["tm-text-primary"]} mb-4 ${styles["tm-section-title"]} text-center`}
+              >
+                Introduction
+              </h2>
+              <p
+                className={`mb-4 text-center ${styles["tm-intro-text"]} ${styles["tm-intro-para"]}`}
+              >
+                Our goal is to provide information about our community for
+                residents and visitors to learn about who we are and what we can
+                provide. This will be an ongoing project with updates and
+                additions as we go along, so check back often!
+              </p>
+              <p className={`mb-5 text-center ${styles["tm-intro-text"]}`}>
+                <h4>WILLIAMSTON CITY HALL</h4>
+                <h5>161 E Grand River Ave, Williamston, MI 48895</h5>
+                <h5>
+                  517-655-2774; Fax-517-655-2797; <a>info@williamston-mi.us</a>
+                </h5>
+                <h5>Office hours, 8am-5pm, Monday-Friday</h5>{" "}
+                <h5>
+                  A locked drop box is available near the front entrance of City
+                  Hall for your convenience.
+                </h5>
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }, [window.innerWidth]);
 
   return (
     <div className={styles["page-content"]}>
@@ -103,7 +125,7 @@ const PageContent = () => {
         <div className="container">
           {introCode}
           <div
-            className={`row ${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]}`}
+            className={`row ${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]} ${styles["tm-intro-text-border"]}`}
           >
             <div className="col-lg-4 mt-5 mt-lg-0">
               <i
@@ -166,176 +188,32 @@ const PageContent = () => {
       </section>
 
       <section
-        id="work"
+        id="City Counsil"
         className={`${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]}`}
       >
         <div className={`container ${styles["tm-container-gallery"]}`}>
-          <div className="row">
-            <div className="text-center col-12">
-              <h2
-                className={`${styles["tm-text-primary"]} ${styles["tm-section-title"]} mb-4`}
-              >
-                Our Work
-              </h2>
-              <p className={`mx-auto ${styles["tm-work-description"]}`}>
-                "Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales
-                nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum
-                primis in faucibus orci luctus et ultrices posuere cubilia."
-              </p>
-            </div>
+          <div className="text-center col-12">
+            <h2
+              className={`${styles["tm-text-primary"]} ${styles["tm-section-title"]} mb-4`}
+            >
+              Our City Council
+            </h2>
+            <p className={`mx-auto ${styles["tm-work-description"]}`}>
+              Regular City Council Meeting Dates Meetings are held on the 2nd
+              and 4th Mondays of the month, at 7:00 PM unless otherwise stated.
+              <a href="http://new.williamston-mi.us/Portals/47/New/RulesProcedure3.24.08.pdf">
+                <b>Click here</b>
+              </a>{" "}
+              for 2023 Council meeting dates.
+            </p>
+            <p>
+              <a href="http://new.williamston-mi.us/Portals/47/New/RulesProcedure3.24.08.pdf">
+                Click here
+              </a>{" "}
+              to view City Council Rules and Procedures adopted March 24, 2008.
+            </p>
           </div>
-          <div className="row">
-            <div className="col-12">
-              <div className={`mx-auto ${styles["tm-gallery-container"]}`}>
-                <div className={`${styles["grid"]} ${styles["tm-gallery"]}`}>
-                  <a href="img/gallery-img-01.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-01.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Dreamy <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-02.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-02.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Second <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-03.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-03.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Third <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-04.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-04.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Dreamy <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-05.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-05.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Fifth <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-06.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-06.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Sixth <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-01.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-01.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Dreamy <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                  <a href="img/gallery-img-02.jpg">
-                    <figure
-                      className={`${styles["effect-honey"]} ${styles["tm-gallery-item"]}`}
-                    >
-                      <img
-                        src="img/gallery-tn-02.jpg"
-                        alt="Image"
-                        className="img-fluid"
-                      />
-                      <figcaption>
-                        <h2>
-                          <i>
-                            Eighth <span>Honey</span> Now
-                          </i>
-                        </h2>
-                      </figcaption>
-                    </figure>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CouncilMemebrs />
         </div>
       </section>
       <ContactMe />

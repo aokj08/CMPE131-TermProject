@@ -11,3 +11,16 @@ export { default as test } from "../assets/Home/test.jpg";
 export { default as city_bg } from "../assets/Home/city-bg.jpg";
 export { default as imgBack } from "../assets/Home/mail.jpeg";
 export { default as loading } from "../assets/Home/loading.gif";
+export { default as phone } from "../assets/Home/phone.png";
+export { default as fax } from "../assets/Home/fax.png";
+export { default as email } from "../assets/Home/email.png";
+
+//City Counsil Images
+export { default as Tammy } from "../assets/Home/City Counsil/Tammy Gilroy.jpg";
+export { default as Brandon } from "../assets/Home/City Counsil/Brandon Lanyon.jpg";
+export { default as Terry } from "../assets/Home/City Counsil/Terry Hansen.jpg";
+export { default as Steve } from "../assets/Home/City Counsil/Steve Jenkins.jpg";
+export { default as Tommy } from "../assets/Home/City Counsil/Tommy Pratt.jpg";
+export { default as Daniel } from "../assets/Home/City Counsil/Daniel Rhinesn.jpg";
+export { default as Scott } from "../assets/Home/City Counsil/Scott VanAllsburg.png";
+export { default as John } from "../assets/Home/City Counsil/John Hanifan.jpg";

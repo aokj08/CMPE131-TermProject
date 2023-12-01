@@ -27,11 +27,12 @@ const AuthProvider = (props) => {
   //   setCurrentUser(user);
   // });
 
-  const signUp = (email, password) => {
+  const signUp = (email, password, name) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        user.displayName = name;
         console.log(user);
         setIsLogIn(true);
         setCurrentUser(user);

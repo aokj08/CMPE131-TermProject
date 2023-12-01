@@ -17,6 +17,7 @@ import {
 
 const Signin = () => {
   const [justifyActive, setJustifyActive] = useState("tab1");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
@@ -32,6 +33,10 @@ const Signin = () => {
     }
 
     setJustifyActive(value);
+  };
+
+  const nameInputHandler = (event) => {
+    setName(event.target.value);
   };
 
   const emailInputHandler = (event) => {
@@ -59,7 +64,7 @@ const Signin = () => {
 
   const formRegisterHandler = (e) => {
     e.preventDefault();
-    ctx.signUp(email, password);
+    ctx.signUp(email, password, name);
 
     setEmail("");
     setPassword("");
@@ -235,6 +240,14 @@ const Signin = () => {
               </div>
 
               <form onSubmit={formRegisterHandler}>
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Name"
+                  type="text"
+                  value={name}
+                  onChange={nameInputHandler}
+                />
+
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Email"
