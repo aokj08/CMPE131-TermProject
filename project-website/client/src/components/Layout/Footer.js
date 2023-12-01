@@ -8,8 +8,22 @@ import {
   MDBBtn,
 } from "mdb-react-ui-kit";
 import { email, fax, phone } from "../../assets";
+import { useState } from "react";
+import { pushSubcribes } from "../../api/axios";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    pushSubcribes(email);
+    setEmail("");
+  };
+
+  const emailInputHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <MDBFooter className="text-center" color="white" bgColor="dark">
       <MDBContainer className="p-4">
@@ -82,7 +96,7 @@ const Footer = () => {
         </section>
 
         <section className="">
-          <form action="">
+          <form onSubmit={submitHandler}>
             <MDBRow className="d-flex justify-content-center">
               <MDBCol size="auto">
                 <p className="pt-2">
@@ -96,6 +110,8 @@ const Footer = () => {
                   type="email"
                   label="Email address"
                   className="mb-4"
+                  value={email}
+                  onChange={emailInputHandler}
                 />
               </MDBCol>
 
