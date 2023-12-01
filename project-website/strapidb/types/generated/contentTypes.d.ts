@@ -362,6 +362,37 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiEmailSubcribeEmailSubcribe extends Schema.CollectionType {
+  collectionName: 'email_subcribes';
+  info: {
+    singularName: 'email-subcribe';
+    pluralName: 'email-subcribes';
+    displayName: 'Email Subcribe';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email-subcribe.email-subcribe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email-subcribe.email-subcribe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSearchContentSearchContent extends Schema.CollectionType {
   collectionName: 'search_contents';
   info: {
@@ -718,6 +749,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::email-subcribe.email-subcribe': ApiEmailSubcribeEmailSubcribe;
       'api::search-content.search-content': ApiSearchContentSearchContent;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
