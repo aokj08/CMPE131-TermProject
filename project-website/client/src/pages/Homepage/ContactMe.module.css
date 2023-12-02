@@ -135,26 +135,6 @@
   transform: scale(1.5);
 }
 
-/* @media screen and (min-width: 940px) {
-  .back-form {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-  }
-
-  .img-back {
-    flex: 1;
-    align-self: center;
-    margin-right: 20px;
-  }
-
-  .central-form form {
-    flex: 0.9;
-  }
-} */
-
 .back-form {
   max-width: 1100px;
   margin: 0 auto;

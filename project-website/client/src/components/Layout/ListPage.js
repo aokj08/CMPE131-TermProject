@@ -8,7 +8,7 @@ const ListPage = (props) => {
   const content = results?.length ? (
     results
   ) : (
-    <arcticle>No Matching Contents</arcticle>
+    <article>No Matching Contents</article>
   );
 
   return <main style={{ margin: "0 1rem 0 1rem" }}>{content}</main>;

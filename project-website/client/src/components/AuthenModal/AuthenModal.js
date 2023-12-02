@@ -94,39 +94,6 @@ const AuthenModal = (props) => {
     </Modal>
   );
 
-  return (
-    //     {!isVerified ? <Modal>
-    //       <h1>Focus App</h1>
-    //       <form onSubmit={submitHandler}>
-    //         <div>
-    //           <label htmlFor="email-address">Email address</label>
-    //           <input
-    //             type="email"
-    //             label="Email address"
-    //             value={email}
-    //             onChange={(e) => setEmail(e.target.value)}
-    //             required
-    //             placeholder="Email address"
-    //           />
-    //         </div>
-    //         <div>
-    //           <label htmlFor="password">Password</label>
-    //           <input
-    //             type="password"
-    //             label="Create password"
-    //             value={password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //             required
-    //             placeholder="Password"
-    //           />
-    //         </div>
-    //         <button type="submit">Sign up</button>
-    //         <p>Already have an account?</p>
-    //       </form>
-    //     </Modal>
-    //    : <Modal></Modal>}
-    // )};
-    modalSelection
-  );
+  return modalSelection;
 };
 export default AuthenModal;

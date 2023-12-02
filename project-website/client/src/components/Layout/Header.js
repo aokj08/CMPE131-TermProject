@@ -60,8 +60,6 @@ const Header = (props) => {
       expand="xxl"
       className={`bg-body-tertiary ${styles[props.className]} `}
       fixed="top"
-      // bg="dark"
-      // data-bs-theme="dark"
     >
       <Container fluid>
         <Navbar.Brand>
@@ -97,9 +95,6 @@ const Header = (props) => {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action4">Water & Sewer</NavDropdown.Item>
               <NavDropdown.Divider />
-              {/* <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item> */}
             </NavDropdown>
             <Nav.Link href="#">Business</Nav.Link>
           </Nav>
@@ -112,7 +107,6 @@ const Header = (props) => {
                 aria-label="Search"
                 onChange={handleSearchChange}
               />{" "}
-              {/* {hasList && <ListPage searchResults={searchResults} />} */}
             </div>
             <Button
               variant="outline-success"

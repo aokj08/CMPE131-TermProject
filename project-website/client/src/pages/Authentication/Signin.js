@@ -22,8 +22,8 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [isVerified, setIsVerified] = useState(false);
-  const [isSignup, setIsSignup] = useState(true);
+  // const [isVerified, setIsVerified] = useState(false);
+  // const [isSignup, setIsSignup] = useState(true);
 
   const ctx = useContext(AuthContext);
 
@@ -151,7 +151,6 @@ const Signin = () => {
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Email Address"
-                  // id="form1"
                   type="email"
                   value={loginEmail}
                   onChange={loginEmailInputHandler}
@@ -159,22 +158,10 @@ const Signin = () => {
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Login Password"
-                  // id="form2"
                   type="password"
                   value={loginPassword}
                   onChange={LoginPasswordInputHandler}
                 />
-
-                {/* <div className="d-flex justify-content-between mx-4 mb-4">
-                  <MDBCheckbox
-                    name="flexCheck"
-                    value=""
-                    id="flexCheckDefault"
-                    label="Remember me"
-                  />
-                  <a href="!#">Forgot password?</a>
-                </div> */}
-
                 <MDBBtn className="mb-4 w-100">Sign in</MDBBtn>
               </form>
 

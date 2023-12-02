@@ -189,7 +189,7 @@ const PageContent = () => {
 
       <section
         id="City Counsil"
-        className={`${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]}`}
+        className={`${styles["tm-section-pad-top"]} ${styles["tm-section-pad-top-content"]} ${styles["tm-intro-text-border"]}`}
       >
         <div className={`container ${styles["tm-container-gallery"]}`}>
           <div className="text-center col-12">

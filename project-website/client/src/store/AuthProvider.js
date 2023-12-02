@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
-  sendEmailVerification,
-  onAuthStateChanged,
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
@@ -13,19 +11,11 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-// const provider = new GoogleAuthProvider();
-
 const AuthProvider = (props) => {
   const [currentUser, setCurrentUser] = useState({});
-  const [loading, setLoading] = useState(true);
   const [isLogIn, setIsLogIn] = useState(false);
 
   const navigate = useNavigate();
-
-  // onAuthStateChanged(auth, (user) => {
-  //   console.log(user);
-  //   setCurrentUser(user);
-  // });
 
   const signUp = (email, password, name) => {
     createUserWithEmailAndPassword(auth, email, password)

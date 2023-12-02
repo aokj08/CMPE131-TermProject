@@ -23,7 +23,7 @@ const CouncilMemebrs = () => {
     animateOut: "bounceOutRight",
     dots: true,
     autoplay: true,
-    smartSpeed: 1200,
+    smartSpeed: 900,
     responsive: {
       0: {
         items: 1,

@@ -1,23 +1,16 @@
 /* Slideshow */
 
 .slideshow {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   margin: 0 auto;
   overflow: hidden;
   width: 100%;
   height: 100vh;
-  /* overflow-y: scroll;
-  scroll-snap-type: y mandatory; */
   scroll-snap-align: center;
   opacity: 1;
 }
 
 .description {
   position: absolute;
-  /* top: 38%; */
   top: 40vh;
   font-family: "Dancing Script", cursive;
   color: white;
@@ -57,7 +50,6 @@
   display: inline-block;
   height: 100vh;
   width: 100%;
-  /* border-radius: 40px; */
 }
 
 /* Buttons */
@@ -149,5 +141,11 @@
 
   .mask {
     height: 400px !important;
+  }
+}
+
+@media (max-width: 488px) {
+  .description h1 {
+    font-size: 1.7rem;
   }
 }

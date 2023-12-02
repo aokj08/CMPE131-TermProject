@@ -1,7 +1,6 @@
 import styles from "./Slideshow.module.css";
 import {
   city_hall_sign_1,
-  city_hall_sign,
   city_road,
   city_night,
   city_morning,
@@ -78,8 +77,6 @@ const Slideshow = () => {
           ))}
         </div>
       </div>
-
-      {/* <div className={styles.section}>Some section</div> */}
     </>
   );
 };
