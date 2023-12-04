@@ -56,7 +56,7 @@ const ContactMe = () => {
 
       // For production mode
       const res = await axios.post(
-        "https://server-testing-f2mo.onrender.com/contact",
+        "https://mailing-server-f0y5.onrender.com/contact",
         data
       );
       console.log(res);
